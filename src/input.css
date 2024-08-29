@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes moveAndFlip {
+    0% {
+      transform: translateX(-100%) rotateY(0deg); /* Départ hors de la vue à gauche sans rotation */
+    }
+    50% {
+      transform: translateX(100vw) rotateY(0deg); /* Déplacement jusqu'à droite hors de la vue sans rotation */
+    }
+    51% {
+      transform: translateX(100vw) rotateY(180deg); /* Juste après la fin du mouvement, rotation sur l'axe Y */
+    }
+    100% {
+      transform: translateX(-100%) rotateY(180deg); /* Retour à gauche hors de la vue avec rotation sur l'axe Y */
+    }
+  }
+  
+  .animate-shark {
+    position: absolute;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+
+    display: block;
+    width: 200px; /* Ajustez la taille de l'image selon vos besoins */
+    height: auto;
+    animation: moveAndFlip 40s linear infinite; /* Animation de 10 secondes en continu */
+   
+  }
+  /* Pour les écrans plus petits */
+  @media (max-width: 768px) { /* Ajustez la largeur selon vos besoins */
+    .animate-shark {
+      animation: moveAndFlip 20s linear infinite; /* Plus rapide pour les petits écrans */
+    }
+  }
+  
+  /* Pour les écrans très petits (comme les téléphones portables) */
+  @media (max-width: 480px) { /* Ajustez la largeur selon vos besoins */
+    .animate-shark {
+      animation: moveAndFlip 10s linear infinite; /* Encore plus rapide pour les très petits écrans */
+    }
+  }
